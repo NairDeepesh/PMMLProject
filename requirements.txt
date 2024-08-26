@@ -1,8 +1,9 @@
 pandas
-numpy
+numpy==1.26.4
 seaborn
 matplotlib
 scikit-learn
 xgboost
 catboost
+statsmodels
 #-e .
