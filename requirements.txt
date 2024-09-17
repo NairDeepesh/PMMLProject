@@ -7,4 +7,6 @@ xgboost
 catboost
 statsmodels
 dill
+Flask
+streamlit
 #-e .

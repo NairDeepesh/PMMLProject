@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engine RUL Prediction System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { padding: 20px; }
+        .container { max-width: 800px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Engine RUL Prediction System</h1>
+        <form action="{{ url_for('predict_datapoint') }}" method="post">
+            <h2>
+                <legend>Enter Engine Parameters</legend>
+            </h2>
+            <div class="mb-3">
+                <label for="time_in_cycles" class="form-label">Time in Cycles</label>
+                <input type="number" class="form-control" name="time_in_cycles" required>
+            </div>
+            <div class="mb-3">
+                <label for="T50" class="form-label">T50</label>
+                <input type="number" step="0.01" class="form-control" name="T50" required>
+            </div>
+            <div class="mb-3">
+                <label for="P30" class="form-label">P30</label>
+                <input type="number" step="0.01" class="form-control" name="P30" required>
+            </div>
+            <div class="mb-3">
+                <label for="Ps30" class="form-label">Ps30</label>
+                <input type="number" step="0.01" class="form-control" name="Ps30" required>
+            </div>
+            <div class="mb-3">
+                <label for="Nc" class="form-label">Nc</label>
+                <input type="number" step="0.01" class="form-control" name="Nc" required>
+            </div>
+            <div class="mb-3">
+                <label for="NRf" class="form-label">NRf</label>
+                <input type="number" step="0.01" class="form-control" name="NRf" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">phi</label>
+                <input type="number" step="0.01" class="form-control" name="phi" required>
+            </div>
+            </div>
+            <div class="mb-3">
+                <label for="BPR" class="form-label">BPR</label>
+                <input type="number" step="0.00001"class="form-control" name="BPR" required>
+            </div>
+            <div class="mb-3">
+                <label for="W32" class="form-label">W32</label>
+                <input type="number" step="0.00001"class="form-control" name="W32" required>
+            </div>
+            <div class="mb-3">
+                <label for="htBleed" class="form-label">HtBleed</label>
+                <input type="number" class="form-control" name="htBleed" required>
+            </div>
+            <div class="mb-3">
+                <input class="btn btn-primary" type="submit" value="Predict RUL" required />
+            </div>
+        </form>
+        {% if results %}
+            <h2>Predicted RUL: {{ results }}</h2>
+        {% endif %}
+        {% if error %}
+            <h2 style="color: red;">Error: {{ error }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
+
